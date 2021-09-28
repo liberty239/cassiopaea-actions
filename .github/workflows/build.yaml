@@ -1,0 +1,36 @@
+name: Build
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.17
+
+      - name: Build
+        run: ./build.sh
+
+      - name: Publish
+        uses: selenehyun/gh-push@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.PUBLISH_ACCESS_TOKEN }}
+          COMMIT_FILES: index.html
+          REPO_FULLNAME: liberty239/liberty239.github.io
+          BRANCH: master
+
+      - name: Publish
+        uses: selenehyun/gh-push@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.PUBLISH_ACCESS_TOKEN }}
+          COMMIT_FILES: .build/*
+          REPO_FULLNAME: liberty239/cassiopaea-assets
+          BRANCH: master
