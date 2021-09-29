@@ -29,7 +29,7 @@ jobs:
         uses: selenehyun/gh-push@master
         env:
           GITHUB_TOKEN: ${{ secrets.PUBLISH_ACCESS_TOKEN }}
-          COMMIT_FILES: ./site/*
+          COMMIT_FILES: .site/*
           REPO_FULLNAME: liberty239/liberty239.github.io
           BRANCH: master
 
