@@ -17,6 +17,8 @@ jobs:
           go-version: 1.17
 
       - name: Build
+        env:
+          GOOGLE_SITE_VERIFICATION: ${{ secrets.GOOGLE_SITE_VERIFICATION }}
         run: ./build.sh
 
       - name: Publish
