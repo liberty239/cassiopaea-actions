@@ -1,5 +1,5 @@
 #!/bin/bash
-#!/bin/bash
+set -e
 go get -u github.com/liberty239/cassiopaea-tools/./...@master
 cass-src fetch-all .build/html
 cass-gen epub .build/html .build/sessions.epub 
